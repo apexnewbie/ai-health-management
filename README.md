@@ -1,6 +1,10 @@
 
 ---
 
+### API文档使用
+
+项目启动后访问 [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html) 即可查看 API 文档。
+
 ### 已完成的功能
 
 - **基础架构与依赖配置**  
