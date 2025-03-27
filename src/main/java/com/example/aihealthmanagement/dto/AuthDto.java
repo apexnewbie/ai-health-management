@@ -21,5 +21,6 @@ public class AuthDto {
     public static class LoginResponse {
         private String token;
     }
+
 }
 

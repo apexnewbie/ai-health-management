@@ -15,4 +15,8 @@ public interface UserRepository {
     @Insert("INSERT INTO user(username, password, email, create_time) " +
             "VALUES(#{username}, #{password}, #{email}, #{createTime})")
     int insert(User user);
+
+    // Find by email
+    @Select("SELECT * FROM user WHERE email = #{email}")
+    User findByEmail(@Param("email") String email);
 }
