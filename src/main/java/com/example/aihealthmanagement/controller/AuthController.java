@@ -3,7 +3,6 @@ package com.example.aihealthmanagement.controller;
 import com.example.aihealthmanagement.common.ServiceResponse;
 import com.example.aihealthmanagement.dto.AuthDto;
 import com.example.aihealthmanagement.dto.AuthDto.LoginRequest;
-import com.example.aihealthmanagement.dto.AuthDto.LoginResponse;
 import com.example.aihealthmanagement.dto.AuthDto.RegisterRequest;
 import com.example.aihealthmanagement.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +20,14 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ServiceResponse<AuthDto.LoginResponse> register(@RequestBody RegisterRequest request) {
-        authService.register(request);
-        return ServiceResponse.success("注册成功", null);
+    public ServiceResponse<AuthDto.RegisterResponse> register(@RequestBody RegisterRequest request) {
+        AuthDto.RegisterResponse response = authService.register(request);
+        return ServiceResponse.success("Register success", response);
     }
 
     @PostMapping("/login")
     public ServiceResponse<AuthDto.LoginResponse> login(@RequestBody LoginRequest request) {
-        LoginResponse response = authService.login(request);
-        return ServiceResponse.success("登录成功", response);
+        AuthDto.LoginResponse response = authService.login(request);
+        return ServiceResponse.success("Login success", response);
     }
 }

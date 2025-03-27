@@ -2,6 +2,7 @@ package com.example.aihealthmanagement.service.impl;
 
 
 import com.example.aihealthmanagement.common.ServiceException;
+import com.example.aihealthmanagement.dto.AuthDto.RegisterResponse;
 import com.example.aihealthmanagement.dto.AuthDto.LoginRequest;
 import com.example.aihealthmanagement.dto.AuthDto.LoginResponse;
 import com.example.aihealthmanagement.dto.AuthDto.RegisterRequest;
@@ -30,7 +31,7 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public void register(RegisterRequest request) {
+    public RegisterResponse register(RegisterRequest request) {
         // 检查请求参数
         if (request.getUsername() == null || request.getPassword() == null || request.getEmail() == null) {
             throw new ServiceException(400, "Username, password and email are required");
@@ -59,6 +60,10 @@ public class AuthServiceImpl implements AuthService {
         if (rows != 1) {
             throw new ServiceException("Register failed");
         }
+        RegisterResponse response = new RegisterResponse();
+        response.setUsername(user.getUsername());
+        response.setEmail(user.getEmail());
+        return response;
     }
 
     @Override

@@ -22,5 +22,11 @@ public class AuthDto {
         private String token;
     }
 
+    @Data
+    public static class RegisterResponse {
+        private String username;
+        private String email;
+    }
+
 }
 

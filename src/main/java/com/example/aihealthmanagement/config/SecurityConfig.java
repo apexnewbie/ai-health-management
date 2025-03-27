@@ -21,7 +21,10 @@ public class SecurityConfig {
                 // 配置请求认证规则
                 .authorizeHttpRequests(authorize -> authorize
                         // 放行 /auth/register 和 /auth/login 接口
-                        .requestMatchers("/auth/register", "/auth/login").permitAll()
+                        .requestMatchers("/auth/register", "/auth/login",
+                                "/v3/api-docs/**",
+                                "/swagger-ui/**",
+                                "/swagger-ui.html").permitAll()
                         // 其他接口都需要认证
                         .anyRequest().authenticated()
                 )
