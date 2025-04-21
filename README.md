@@ -17,6 +17,9 @@
   - 配置了 Spring Security，通过 JWT 认证过滤器来检测用户登录状态。
   - 建立了统一的响应格式（ServiceResponse）和全局异常处理（ServiceException、GlobalExceptionHandler），确保前后端返回数据格式统一。
 
+- **运动与饮食前端静态页面初步搭建**
+  - ![img.png](img.png)
+  - 使用react，搭建包含问题建议，聊天框
 ---
 
 ### 待完成的功能
@@ -50,3 +53,4 @@ AI 健康管理系统 的饮食和运动推荐模块
   - 数据分析
 
 ---
+
