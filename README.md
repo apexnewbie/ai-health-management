@@ -5,8 +5,7 @@
 1. **智能健身咨询**
    - chatbot连接
    - 运动数据展示
-   - 常见健身问题解答
-   - 添加假数据进行测试test-api
+   - 添加假数据进行测试test-api，需要在ExerciseAIChatBox文件中消除注释行
 
 2. **健康数据追踪**
     - 待完成
@@ -20,16 +19,10 @@
 
 5. **登录注册界面**
    - 已存在
+   - 但需要优化
 
-##安装包控制
 
-- **前端框架**: React 19.1.0
-- **开发语言**: TypeScript 4.9.5
-- **UI组件库**: Ant Design 5.24.6
-- **图表组件**: Ant Design Charts 2.2.7
-- **路由管理**: React Router DOM 6.3.0
-- **样式管理**: Styled Components 6.1.17
-- **Markdown渲染**: React Markdown 8.0.7，Remark GFM 4.0.1
+- **Markdown渲染问题**: 尝试不同版本，但是依赖问题没有解决
 
 ## 项目结构
 
@@ -53,13 +46,6 @@ health-management-system/
 └── tsconfig.json          # TypeScript配置
 ```
 
-## 安装与运行
-
-### 系统版本
-
-- Node.js 16.x 或更高版本
-- npm 8.x 或更高版本
-
 ### 需安装依赖
 
 ```bash
@@ -76,33 +62,4 @@ npm start
 
 ```bash
 npm run build
-```
-
-## 依赖包版本
-
-```json
-"dependencies": {
-  "@ant-design/charts": "^2.2.7",
-  "@ant-design/icons": "^6.0.0",
-  "@testing-library/dom": "^10.4.0",
-  "@testing-library/jest-dom": "^6.6.3",
-  "@testing-library/react": "^16.3.0",
-  "@testing-library/user-event": "^13.5.0",
-  "@types/jest": "^27.5.2",
-  "@types/node": "^16.18.126",
-  "@types/react": "^19.1.0",
-  "@types/react-dom": "^19.1.1",
-  "antd": "^5.24.6",
-  "react": "^19.1.0",
-  "react-dom": "^19.1.0",
-  "react-markdown": "^8.0.7",
-  "react-router-dom": "^6.3.0",
-  "react-scripts": "5.0.1",
-  "rehype-raw": "^7.0.0",
-  "rehype-sanitize": "^6.0.0",
-  "remark-gfm": "^4.0.1",
-  "styled-components": "^6.1.17",
-  "typescript": "^4.9.5",
-  "web-vitals": "^2.1.4"
-}
-```
+``
