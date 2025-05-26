@@ -17,8 +17,8 @@ public class JwtTokenProvider {
     private final long validityInMilliseconds = 3600000;
 
     public String generateToken(User user) {
-        Claims claims = Jwts.claims().setSubject(user.getUsername());
-        // 可以添加其他 claims，比如用户角色等
+        // 只把用户的 id 作为 subject
+        Claims claims = Jwts.claims().setSubject(user.getId().toString());
 
         Date now = new Date();
         Date expiry = new Date(now.getTime() + validityInMilliseconds);
@@ -31,5 +31,29 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    // 你还可以添加验证令牌、解析用户名等辅助方法
+    /**
+     * 从 token 的 subject 中解析出 userId
+     */
+    public Long getUserIdFromToken(String token) {
+        String subject = Jwts.parserBuilder()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+        return Long.parseLong(subject);
+    }
+
+    public boolean validateToken(String token) {
+        try {
+            Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(token);
+            return true;
+        } catch (JwtException | IllegalArgumentException e) {
+            // 解析失败：包括过期、签名错误等
+            return false;
+        }
+    }
 }

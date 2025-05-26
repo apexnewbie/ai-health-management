@@ -28,5 +28,12 @@ public class AuthDto {
         private String email;
     }
 
+    @Data
+    public static class UserInfoResponse {
+        private Long id;
+        private String username;
+        private String email;
+    }
+
 }
 

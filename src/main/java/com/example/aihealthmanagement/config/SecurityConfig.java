@@ -9,12 +9,16 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.example.aihealthmanagement.security.JwtAuthenticationFilter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationFilter jwtAuthenticationFilter) throws Exception {
         http
                 // 禁用 CSRF（无状态 REST API 可关闭 CSRF）
                 .csrf(AbstractHttpConfigurer::disable)
@@ -33,7 +37,7 @@ public class SecurityConfig {
                 // 禁用 HTTP Basic 认证
                 .httpBasic(AbstractHttpConfigurer::disable);
 
-        // 如果后续集成 JWT 验证过滤器，可以在这里添加
+        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }

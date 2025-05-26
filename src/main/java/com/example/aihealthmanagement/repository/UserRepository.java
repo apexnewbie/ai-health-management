@@ -19,4 +19,8 @@ public interface UserRepository {
     // Find by email
     @Select("SELECT * FROM user WHERE email = #{email}")
     User findByEmail(@Param("email") String email);
+
+    // Find by ID
+    @Select("SELECT * FROM user WHERE id = #{id}")
+    User findById(@Param("id") Long id);
 }
