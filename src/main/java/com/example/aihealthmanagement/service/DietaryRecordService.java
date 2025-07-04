@@ -7,7 +7,7 @@ import java.util.List;
 public interface DietaryRecordService {
     List<DietaryRecord> listByUserId(Long userId);
     DietaryRecord getById(Long id);
-    void create(DietaryRecord record);
+    DietaryRecord create(DietaryRecord record);
     void update(DietaryRecord record);
     void delete(Long id);
 }

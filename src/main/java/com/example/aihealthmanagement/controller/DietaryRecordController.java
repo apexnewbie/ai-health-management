@@ -55,8 +55,8 @@ public class DietaryRecordController {
                 .notes(request.getNotes())
                 .totalCalories(request.getTotalCalories())
                 .build();
-        dietaryRecordService.create(record);
-        return ServiceResponse.success("Created", null);
+        DietaryRecord created = dietaryRecordService.create(record);
+        return ServiceResponse.success("Created", created);
     }
 
     @PutMapping("/{id}")

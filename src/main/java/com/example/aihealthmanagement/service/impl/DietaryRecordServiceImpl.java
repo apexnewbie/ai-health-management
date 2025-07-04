@@ -31,9 +31,10 @@ public class DietaryRecordServiceImpl implements DietaryRecordService {
     }
 
     @Override
-    public void create(DietaryRecord record) {
+    public DietaryRecord create(DietaryRecord record) {
         record.setCreateTime(LocalDateTime.now());
         repository.insert(record);
+        return record;
     }
 
     @Override
