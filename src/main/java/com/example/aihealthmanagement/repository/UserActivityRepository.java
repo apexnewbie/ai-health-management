@@ -4,6 +4,7 @@ import com.example.aihealthmanagement.entity.UserActivity;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface UserActivityRepository {
@@ -23,4 +24,17 @@ public interface UserActivityRepository {
 
     @Delete("DELETE FROM user_activity WHERE id = #{id}")
     int delete(@Param("id") Long id);
+
+    @Select("SELECT activity_date, SUM(calories) as totalCalories " +
+            "FROM user_activity " +
+            "WHERE user_id = #{userId} " +
+            "AND activity_date >= #{startDate} " +
+            "AND activity_date <= #{endDate} " +
+            "GROUP BY activity_date " +
+            "ORDER BY activity_date")
+    List<Map<String, Object>> getCaloriesBurnedByUserAndDateRange(
+            @Param("userId") Long userId,
+            @Param("startDate") String startDate,
+            @Param("endDate") String endDate
+    );
 }
