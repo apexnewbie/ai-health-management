@@ -4,6 +4,7 @@ import com.example.aihealthmanagement.entity.FoodItem;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface FoodItemRepository {
@@ -23,4 +24,17 @@ public interface FoodItemRepository {
 
     @Delete("DELETE FROM food_item WHERE id = #{id}")
     int delete(@Param("id") Long id);
+
+    @Select("SELECT fi.category, SUM(fi.quantity) as totalQuantity, SUM(fi.calories) as totalCalories " +
+            "FROM food_item fi " +
+            "JOIN dietary_record dr ON fi.dietary_record_id = dr.id " +
+            "WHERE dr.user_id = #{userId} " +
+            "AND dr.record_date >= #{startDate} " +
+            "AND dr.record_date <= #{endDate} " +
+            "GROUP BY fi.category")
+    List<Map<String, Object>> getCategoryDataByUserAndDateRange(
+            @Param("userId") Long userId,
+            @Param("startDate") String startDate,
+            @Param("endDate") String endDate
+    );
 }
