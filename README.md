@@ -52,7 +52,7 @@ The default settings live in `src/main/resources/application.properties`
 
 ```properties
 spring.application.name=ai-health-management
-spring.datasource.url=jdbc:mysql://localhost:3306/ai_health_db?useSSL=false&characterEncoding=utf8
+spring.datasource.url=jdbc:mysql://localhost:3306/ai_health_db?useSSL=false&characterEncoding=utf8&connectionCollation=utf8mb4_unicode_ci
 spring.datasource.username=root
 spring.datasource.password=            # <- fill in if needed>
 mybatis.configuration.map-underscore-to-camel-case=true
